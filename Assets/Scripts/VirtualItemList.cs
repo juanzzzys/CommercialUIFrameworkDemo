@@ -8,9 +8,11 @@ public class VirtualItemList : MonoBehaviour
     [SerializeField] private ScrollRect scrollRect;
     [SerializeField] private RectTransform content;
     [SerializeField] private ItemCellPool pool;
-    [SerializeField] private float cellHeight = 100f;
+    [SerializeField] private float cellHeight = 200f;
     [SerializeField] private float spacing = 10f;
     [SerializeField] private int bufferCount = 2;
+    [SerializeField] private float cellWidth = 200f;
+    [SerializeField] private int columnCount = 4;
 
     private RectTransform viewport;
     private List<ItemData> dataList = new List<ItemData>();
@@ -61,14 +63,14 @@ public class VirtualItemList : MonoBehaviour
        Refresh();
         float itemSize = cellHeight + spacing;
        // Debug.Log($"Viewport Height: {viewport.rect.height}, Cell Height: {cellHeight}, Spacing: {spacing}");
-        int visibleCount = Mathf.CeilToInt(viewport.rect.height / itemSize);
-        
-        if (visibleCount < 1)
+       int visibleRowCount = Mathf.CeilToInt(viewport.rect.height / itemSize);
+
+        if (visibleRowCount < 1)
         {
-            visibleCount = 1;
+            visibleRowCount = 1;
         }
 
-        int cellCount = visibleCount + bufferCount;
+        int cellCount = (visibleRowCount + bufferCount) * columnCount;
         for (int i = 0; i < cellCount; i++)
         {
             ItemCell cell = pool.Get();
@@ -79,11 +81,22 @@ public class VirtualItemList : MonoBehaviour
         
     }
 
-    private void UpdateContentHeight()
+     private void UpdateContentHeight()
     {
-        float itemSize = cellHeight + spacing;
         int count = dataList != null ? dataList.Count : 0;
-       float height = count > 0? count * cellHeight + (count - 1) * spacing: 0f;
+
+        if (count == 0)
+        {
+            content.sizeDelta = new Vector2(content.sizeDelta.x, 0f);
+            return;
+        }
+
+        int rowCount = Mathf.CeilToInt((float)count / columnCount);
+
+        float rowSize = cellHeight + spacing;
+
+        float height = rowCount * cellHeight + (rowCount - 1) * spacing;
+
         content.sizeDelta = new Vector2(content.sizeDelta.x, height);
     }
 
@@ -103,7 +116,8 @@ public class VirtualItemList : MonoBehaviour
         }
 
         float itemSize = cellHeight + spacing;
-        int startIndex = Mathf.Max(0,Mathf.FloorToInt(content.anchoredPosition.y / itemSize));
+        int startRow = Mathf.Max(0, Mathf.FloorToInt(content.anchoredPosition.y / itemSize));
+        int startIndex = startRow * columnCount;
 //        Debug.Log(
 //     $"startIndex={startIndex}, " +
 //     $"currentStartIndex={currentStartIndex}, " +
@@ -119,6 +133,8 @@ public class VirtualItemList : MonoBehaviour
         for (int i = 0; i < cells.Count; i++)
         {
             int dataIndex = startIndex + i;
+            int column = dataIndex % columnCount;
+            int row = dataIndex / columnCount;
             ItemCell cell = cells[i];
 
             if (dataList == null || dataIndex < 0 || dataIndex >= dataList.Count)
@@ -128,11 +144,16 @@ public class VirtualItemList : MonoBehaviour
             }
 
             cell.gameObject.SetActive(true);
-            Debug.Log($"准备设置Cell：i={i}, dataIndex={dataIndex}");
+           // Debug.Log($"准备设置Cell：i={i}, dataIndex={dataIndex}");
             cell.SetData(dataList[dataIndex]);
 
             RectTransform cellRect = cell.transform as RectTransform;
-            cellRect.anchoredPosition = new Vector2(0f, -dataIndex * itemSize);
+
+
+            float x = column * (cellWidth + spacing);
+            float y = -row * (cellHeight + spacing);
+
+            cellRect.anchoredPosition = new Vector2(x, y);
 //             Debug.Log(
 //     $"Cell {i}: dataIndex={dataIndex}, " +
 //     $"anchoredY={cellRect.anchoredPosition.y}"

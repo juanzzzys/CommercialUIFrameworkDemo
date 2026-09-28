@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
 
     private Dictionary<Type, BasePanel> panelDict = new Dictionary<Type, BasePanel>();
     private Stack<BasePanel> panelStack = new Stack<BasePanel>();
+    private HashSet<BasePanel> pausedPanels = new HashSet<BasePanel>();
     private Dictionary<UILayer, Transform> layerDict;
 
     public static UIManager Instance { get; private set; }
@@ -77,8 +78,12 @@ public class UIManager : MonoBehaviour
                     return panel;
                 }
 
-                topPanel.OnPause();
-            }
+                if (panel.Layer != UILayer.Popup)
+                {
+                    topPanel.OnPause();
+                    pausedPanels.Add(topPanel);
+                }
+                    }
 
             panelStack.Push(panel);
         }
@@ -98,10 +103,15 @@ public class UIManager : MonoBehaviour
         BasePanel currentPanel = panelStack.Pop();
         currentPanel.OnExit();
 
-        if (panelStack.Count > 0)
+       if (panelStack.Count > 0)
         {
             BasePanel previousPanel = panelStack.Peek();
-            previousPanel.OnResume();
+
+            if (pausedPanels.Contains(previousPanel))
+            {
+                previousPanel.OnResume();
+                pausedPanels.Remove(previousPanel);
+            }
         }
     }
 

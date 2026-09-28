@@ -1401,10 +1401,10 @@ RectTransform:
   - {fileID: 1843343405}
   m_Father: {fileID: 1522361999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17, y: -128.45361}
-  m_SizeDelta: {x: 1280, y: 643.9524}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 640, y: -321.5}
+  m_SizeDelta: {x: 1280, y: 643}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &651927365
 MonoBehaviour:
@@ -1577,7 +1577,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OpenLoading
+  m_text: close
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2702,7 +2702,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: OpenLoading
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2997,10 +2997,10 @@ RectTransform:
   - {fileID: 651927364}
   m_Father: {fileID: 453979684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1280, y: -758.5}
+  m_SizeDelta: {x: 1280, y: 643}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1522362000
 Canvas:
@@ -3038,7 +3038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.3962264, g: 0.36059874, b: 0.28221786, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3400,7 +3400,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1579940139}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 673522750}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1579940139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3731,9 +3743,11 @@ MonoBehaviour:
   scrollRect: {fileID: 1992034282}
   content: {fileID: 805423625}
   pool: {fileID: 159917135}
-  cellHeight: 100
+  cellHeight: 200
   spacing: 10
   bufferCount: 2
+  cellWidth: 200
+  columnCount: 4
 --- !u!4 &1686491476
 Transform:
   m_ObjectHideFlags: 0

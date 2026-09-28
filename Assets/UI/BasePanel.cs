@@ -26,7 +26,7 @@ public class BasePanel : MonoBehaviour
 
     public virtual void OnPause()
     {
-        Hide();
+        HideOnPause();
     }
 
     public virtual void OnResume()
@@ -35,6 +35,10 @@ public class BasePanel : MonoBehaviour
     }
 
     public virtual void OnExit()
+    {
+        Hide();
+    }
+    protected virtual void HideOnPause()
     {
         Hide();
     }
