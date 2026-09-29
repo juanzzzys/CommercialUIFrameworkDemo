@@ -363,6 +363,7 @@ MonoBehaviour:
   itemNameText: {fileID: 4318237540867356027}
   itemCountText: {fileID: 3586732207965281145}
   itemQualityText: {fileID: 5668672988575668454}
+  RedDotUI: {fileID: 5322165720316897794, guid: f3c84d97698029d4c8c673625b0a03aa, type: 3}
 --- !u!1 &5862949238253681228
 GameObject:
   m_ObjectHideFlags: 0

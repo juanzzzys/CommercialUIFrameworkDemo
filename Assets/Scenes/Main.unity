@@ -2511,6 +2511,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372153256}
   m_CullTransparentMesh: 1
+--- !u!1 &1383088898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383088900}
+  - component: {fileID: 1383088899}
+  m_Layer: 0
+  m_Name: RedDotManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1383088899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383088898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5737260327d864fad219e91b9e93e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mockData: {fileID: 2061347822}
+  redDotPrefab: {fileID: 5322165720316897794, guid: f3c84d97698029d4c8c673625b0a03aa, type: 3}
+  inventoryButton: {fileID: 1706269945}
+--- !u!4 &1383088900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383088898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 974.24756, y: 433.9686, z: -5.534406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393947424
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,3 +5481,4 @@ SceneRoots:
   - {fileID: 329363194}
   - {fileID: 159917136}
   - {fileID: 1686491476}
+  - {fileID: 1383088900}

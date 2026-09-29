@@ -10,6 +10,8 @@ public class ItemCell:MonoBehaviour
    private TMP_Text itemCountText;
    [SerializeField]
    private TMP_Text itemQualityText;
+   [SerializeField]
+   private RedDotUI redDotUI;
 
    private ItemData itemData;
    public event Action<ItemData> Onclicked;
@@ -26,6 +28,18 @@ public void Onclick(){
    Debug.Log(itemData.itemName);
     Onclicked?.Invoke(itemData);
 
+}
+public void RefreshRedDot(){
+    if(itemData==null||redDotUI==null){
+        return;
+    }
+    bool isNew=RedDotManager.Instance.IsItemNew(itemData.id);
+    if(isNew){
+        redDotUI.Show();
+    }
+    else{
+        redDotUI.Hide();
+    }
 }
 
 }

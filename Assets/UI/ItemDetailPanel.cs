@@ -11,14 +11,20 @@ public class ItemDetailPanel : BasePanel
    private TMP_Text itemCountText;
    [SerializeField]
    private TMP_Text itemQualityText;
+   private ItemData item;
+
 
     public void SetData(ItemData item)
     {
-        
+        this.item=item;
 
         itemNameText.text = item.itemName;
         itemCountText.text = item.count.ToString();
         itemQualityText.text = item.quality.ToString();
+    }
+    protected override void OnExit(){
+       
+       RedDotManager.Instance.RefreshInventoryRedDot();
     }
 
 }

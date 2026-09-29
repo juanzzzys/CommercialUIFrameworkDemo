@@ -16,6 +16,7 @@ public class InventoryPanel : BasePanel
         base.OnEnter();
         currentQuality = ItemQuality.All;
          RefreshList();
+        RedDotManager.Instance.MarkAllItemsAsViewed();
 
     }
 
@@ -37,11 +38,13 @@ public class InventoryPanel : BasePanel
 
     private void OnItemClicked(ItemData item)
     { 
-        Debug.Log($"点击了物品：{item.itemName}");
+         RedDotManager.Instance.MarkItemAsViewed(item.id);
+        //Debug.Log($"点击了物品：{item.itemName}");
         ItemDetailPanel detailPanel =UIManager.Instance.OpenPanel<ItemDetailPanel>();
         detailPanel.SetData(item);
        
     }
+
     //通过品质进行筛选
     private List<ItemData> FilterByQuality(ItemQuality quality)
     {
@@ -77,7 +80,7 @@ public class InventoryPanel : BasePanel
 
     public void ShowAll()
     {
-        Debug.Log("All 按钮被点击");
+        //Debug.Log("All 按钮被点击");
         Show(ItemQuality.All);
     }
 

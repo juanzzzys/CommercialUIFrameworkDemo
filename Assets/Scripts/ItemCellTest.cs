@@ -1,18 +1,14 @@
 using UnityEngine;
-public class ItemCellTest:MonoBehaviour{
+
+public class ItemCellTest : MonoBehaviour
+{
     [SerializeField]
-   private MockInventoryData mockInventoryData;
-   [SerializeField]
-   private ItemCell itemCell;
+    private MockInventoryData mockInventoryData;
 
-
-
-   void Start(){
-   Debug.Log("ItemCellTest Start 执行了");
-
-        itemCell.SetData(mockInventoryData.Data.items[0]);
-
-        Debug.Log("SetData 执行完成");
-
-   }
+    public void TestAddItem()
+    {
+        mockInventoryData.Data.AddItem(
+            new ItemData(301, "测试物品", 1, ItemQuality.Common)
+        );
+    }
 }

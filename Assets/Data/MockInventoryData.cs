@@ -1,15 +1,15 @@
 using UnityEngine;
 public class MockInventoryData:MonoBehaviour
 {
-    private InventoryData inventoryData;
+    private InventoryData inventoryData=new InventoryData();
     public InventoryData Data => inventoryData;
     private void Awake()
     {
-    inventoryData=new InventoryData();
+    
     for (int i = 1; i <= 300; i++)
     {
         if(i<=50){
- inventoryData.items.Add(new ItemData(i, "Item" + i, 50, ItemQuality.Common));
+            inventoryData.items.Add(new ItemData(i, "Item" + i, 50, ItemQuality.Common));
         }
         else if(i>50&&i<=150){
              inventoryData.items.Add(new ItemData(i, "Item" + i, 100, ItemQuality.Uncommon));
