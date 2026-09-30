@@ -115,16 +115,30 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ClosePanel<T>() where T : BasePanel
+   public void ClosePanel<T>() where T : BasePanel
     {
         T panel = GetPanel<T>();
-        if (panel == null)
-        {
-            return;
-        }
+
+        // Debug.Log("ClosePanel 找到面板：" + panel);
+
+        if (panel == null) return;
+
+        // Debug.Log("关闭前 Stack 数量：" + panelStack.Count);
+
+        // if (panel.UseStack && panelStack.Count > 0 && panelStack.Peek() == panel)
+        // {
+        //     panelStack.Pop();
+        //     Debug.Log("已经 Pop ItemDetailPanel，当前 Stack 数量：" + panelStack.Count);
+        // }
 
         panel.OnExit();
+
+        // Debug.Log("ItemDetailPanel OnExit 执行完成");
     }
+
+
+      
+    
 
     private Transform GetLayerTransform(UILayer layer)
     {

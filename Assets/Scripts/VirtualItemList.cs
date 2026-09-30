@@ -107,11 +107,11 @@ public class VirtualItemList : MonoBehaviour
 
     private void Refresh()
     {
-        Debug.Log($"Refresh开始: cells.Count={cells.Count}, currentStartIndex={currentStartIndex}");
+        //Debug.Log($"Refresh开始: cells.Count={cells.Count}, currentStartIndex={currentStartIndex}");
 
         if (cells.Count == 0)
         {
-           Debug.Log("Refresh提前退出：cells.Count == 0");
+           //Debug.Log("Refresh提前退出：cells.Count == 0");
             return;
         }
 
@@ -126,7 +126,7 @@ public class VirtualItemList : MonoBehaviour
 // );
         if (startIndex == currentStartIndex)
         {
-             Debug.Log("Refresh提前退出：startIndex没有变化");
+            // Debug.Log("Refresh提前退出：startIndex没有变化");
              return;
             }   
         currentStartIndex = startIndex;

@@ -16,7 +16,7 @@ public class InventoryPanel : BasePanel
         base.OnEnter();
         currentQuality = ItemQuality.All;
          RefreshList();
-        RedDotManager.Instance.MarkAllItemsAsViewed();
+       // RedDotManager.Instance.MarkAllItemsAsViewed();
 
     }
 
@@ -38,7 +38,7 @@ public class InventoryPanel : BasePanel
 
     private void OnItemClicked(ItemData item)
     { 
-         RedDotManager.Instance.MarkItemAsViewed(item.id);
+        // RedDotManager.Instance.MarkItemAsViewed(item.id);
         //Debug.Log($"点击了物品：{item.itemName}");
         ItemDetailPanel detailPanel =UIManager.Instance.OpenPanel<ItemDetailPanel>();
         detailPanel.SetData(item);
