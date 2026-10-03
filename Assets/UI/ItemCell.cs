@@ -25,7 +25,7 @@ public void SetData(ItemData item)
      RefreshRedDot();
 }
 public void Onclick(){
-   Debug.Log(itemData.itemName);
+   //Debug.Log(itemData.itemName);
    RedDotManager.Instance.MarkItemAsViewed(itemData.id);
     RefreshRedDot();
     Onclicked?.Invoke(itemData);
@@ -39,7 +39,7 @@ public void RefreshRedDot()
     }
 
     bool isNew = RedDotManager.Instance.IsItemNew(itemData.id);
-    Debug.Log($"ItemCell：{itemData.itemName}，id={itemData.id}，IsNew={isNew}");
+   // Debug.Log($"ItemCell：{itemData.itemName}，id={itemData.id}，IsNew={isNew}");
 
     if (isNew)
     {

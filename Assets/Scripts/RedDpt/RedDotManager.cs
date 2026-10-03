@@ -43,6 +43,7 @@ public class RedDotManager : MonoBehaviour
         return redDot;
     }
     public void ShowRedDot(Transform target){
+        //Debug.Log($"显示红点目标：{target.name}");
         RedDotUI redDot=CreateRedDot(target);
         redDot.Show();
     }
@@ -85,8 +86,8 @@ public class RedDotManager : MonoBehaviour
             viewedItemIds.Add(item.id);
         }
     }
-    private void OnItemAdded(ItemData item){
-         Debug.Log($"收到新物品：{item.itemName}");
+    public void OnItemAdded(ItemData item){
+        // Debug.Log($"收到新物品：{item.itemName}");
           RefreshInventoryRedDot();
     }
     //谁关心数据变化 就谁dingyueInventory里面的OnItemAdded
